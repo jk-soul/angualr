@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>`
+    <meta charset="utf-8">
+    <title></title>
+    <script src="bower_components/angular/angular.min.js"></script>
+</head>
+<body ng-controller="TestCtrl">
+{{ greeting }}
+
+</body>
+</html>
+<script>
+    function TestCtrl($scope) {
+        $scope.greeting = 'Hello World';
+    }
+    var question = {
+        "title": "依法治国的目标是：实现（ ）在治理国家中的权威性和稳定性，确保社会主义民主的制度化、法律化。",
+        "selections": [
+            {"content": "宪法", "correct": false},
+            {"content": "宪法、法律、法规", "correct": true},
+            {"content": "宪法和法律", "correct": false},
+            {"content": "法律", "correct": false}
+        ]
+    }
+
+</script>
