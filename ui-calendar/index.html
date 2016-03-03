@@ -1,0 +1,34 @@
+<html ng-app="sod">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../bower_components/fullcalendar-master/dist/fullcalendar.css"/>
+
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="../bower_components/jquery/jquery.js"></script>
+    <script src="../bower_components/moment/min/moment.min.js"></script>
+
+    <script src="../bower_components/ui-calendar-master/src/calendar.js"></script>
+
+    <script src="../bower_components/fullcalendar-master/dist/fullcalendar.js"></script>
+    <script src="../bower_components/fullcalendar-master/src/gcal/gcal.js"></script>
+    <script src="calendar.js"></script>
+</head>
+<body ng-controller="calendarCtrl">
+<div>{{eventSources}}</div>
+<div>
+    <a href ng-click="clearEvent()">清空</a>
+</div>
+<!--<table>-->
+    <!--<tr>-->
+        <!--<td width="30%">-->
+            <!--<div ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="myCalendar"></div>-->
+        <!--</td>-->
+        <!--<td width="90%"></td>-->
+    <!--</tr>-->
+<!--</table>-->
+<div ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="myCalendar"></div>
+<!--<div ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventSources"></div>-->
+</body>
+</html>

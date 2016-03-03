@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <title></title>
+</head>
+<body>
+<p><i>niihao</i></p>
+
+<div>
+    <div>
+        <a href="#">index</a>
+        <ul>
+            <li><a ui-sref="route1">route1</a></li>
+            <li><a ui-sref="route2">route2</a></li>
+        </ul>
+    </div>
+</div>
+<div ui-view></div>
+</body>
+</html>
+
+<script>
+    var myApp = angular.module('myApp', ['ui.router']);
+    myApp.config(function ($stateProvider, $urlRouterProvider) {
+
+        // For any unmatched url, send to /route1
+        $urlRouterProvider.otherwise('/route1');
+        $stateProvider
+                .state('route1', {
+                    url: '/route1',
+                    templateUrl: '1/route1.html'
+                })
+                .state('list', {
+                    parent:'route1',
+                    url: '/list',
+                    templateUrl: '1/route1.list.html',
+                    controller: function ($scope) {
+                        $scope.items = [1, 2, 3, 4]
+                    }
+                })
+
+                .state('route2', {
+                    url: '/route2',
+                    templateUrl: '1/route2.html'
+                })
+                .state('route2.list', {
+                    url: '/list',
+                    templateUrl: '1/route2.list.html',
+                    controller: function ($scope) {
+                        $scope.things = [4, 3, 2, 1]
+                    }
+                })
+    })
+</script>

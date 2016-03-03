@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>jQuery Print Element Tester</title>
+
+    <script type="text/javascript" src="../bower_components/jquery/jquery.min.js"></script>
+
+    <script type="text/javascript"
+            src="../bower_components/jQuery.printElement/dist/jquery.printelement.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            console.log(2);
+            $("#simplePrint").click(function () {
+                console.log(1);
+                $('#toPrint').printElement();
+            });
+        });
+    </script>
+
+</head>
+<body>
+<input type="button" value="$('#toPrint').printElement()" id="simplePrint"/>
+<hr/>
+<div id="toPrint"> hmm , need some more printable samples here</div>
+</body>
+</html>

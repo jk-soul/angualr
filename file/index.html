@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="sod">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/ng-file-upload/angular-file-upload-shim.js"></script>
+    <script src="../bower_components/ng-file-upload/angular-file-upload.js"></script>
+    <script src="fileCtrl.js"></script>
+</head>
+<body ng-controller="FileCtrl">
+ <div>
+     {{$files}}{{1}}
+     <input class="input-file form-control" id="fileInput" type="file" ng-file-select="onFileSelect($files,doc.businesslicensefile)">
+ </div>
+<!--<div>-->
+    <!--watching model:-->
+    <!--<div class="button" ngf-select ng-model="files">Upload using model $watch</div>-->
+    <!--<div class="button" ngf-select ngf-change="upload($files)">Upload on file change</div>-->
+    <!--Drop File:-->
+    <!--<div ngf-drop ng-model="files" class="drop-box"-->
+         <!--ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"-->
+         <!--ngf-accept="'image/*,application/pdf'">Drop Images or PDFs files here</div>-->
+    <!--<div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>-->
+
+    <!--Image thumbnail: <img ngf-src="files[0]" ngf-default-src="'/thumb.jpg'" ngf-accept="'image/*'">-->
+    <!--Audio preview: <audio controls ngf-src="files[0]" ngf-accept="'audio/*'"></audio>-->
+    <!--Video preview: <video controls ngf-src="files[0]" ngf-accept="'video/*'"></video>-->
+<!--</div>-->
+</body>
+</html>

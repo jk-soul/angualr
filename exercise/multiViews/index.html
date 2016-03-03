@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../bower_components/angular/angular.min.js"></script>
+    <script src="../../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+</head>
+<body>
+<div ui-view style="background-color: blue"></div>
+<!-- contacts.html plugs in here -->
+<div ui-view="status"></div>
+</body>
+</html>
+
+<script>
+    var app = angular.module('app', ['ui.router']);
+    app.config(function ($stateProvider, $urlRouterProvider) {
+        // For any unmatched url, send to /route1
+        $stateProvider
+                .state('contacts', {
+                    // This will get automatically plugged into the unnamed ui-view
+                    // of the parent state template. Since this is a top level state,
+                    // its parent state template is index.html.
+                    url: '/contacts',
+                    views: {
+                        '': {
+                            templateUrl: 'contacts.html'
+                        },
+                        'status': {
+                            template: '<h2>我是默认的status</h2>'
+                        }
+                    }
+                })
+                .state('contacts.detail', {
+                    url: '/detail',
+                    views: {
+                        ////////////////////////////////////
+                        // Relative Targeting             //
+                        // Targets parent state ui-view's //
+                        ////////////////////////////////////
+
+                        // Relatively targets the 'detail' view in this state's parent state, 'contacts'.
+                        // <div ui-view='detail'/> within contacts.html
+                        "detail": {
+                            templateUrl: 'contacts.detail.html'
+                        },
+
+                        // Relatively targets the unnamed view in this state's parent state, 'contacts'.
+                        // <div ui-view/> within contacts.html
+                        "": {
+                            template: '我是第二层默认的'
+                        },
+
+                        ///////////////////////////////////////////////////////
+                        // Absolute Targeting using '@'                      //
+                        // Targets any view within this state or an ancestor //
+                        ///////////////////////////////////////////////////////
+
+                        // Absolutely targets the 'info' view in this state, 'contacts.detail'.
+                        // <div ui-view='info'/> within contacts.detail.html
+                        "info@contacts.detail": {
+                            template:'我是第三层的info'
+                        },
+
+                        // Absolutely targets the 'detail' view in the 'contacts' state.
+                        // <div ui-view='detail'/> within contacts.html
+                        "detail@contacts": {
+                            template:'我是第二个detail'
+                        },
+
+                        // Absolutely targets the unnamed view in parent 'contacts' state.
+                        // <div ui-view/> within contacts.html
+                        "@contacts": { },
+
+                        // absolutely targets the 'status' view in root unnamed state.
+                        // <div ui-view='status'/> within index.html
+                        "status@": {
+                            template: '<h2>我是第一层的 statsu</h2>'
+                        },
+
+                        // absolutely targets the unnamed view in root unnamed state.
+                        // <div ui-view/> within index.html
+                        "@": {
+//                            template:''
+                        }
+                    }}
+        );
+
+    })
+</script>
